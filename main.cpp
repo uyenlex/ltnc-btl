@@ -139,7 +139,7 @@ void RandomBlock () { //19 types of block
 void printMap() { 
     // print the board after putting block on it
     system("cls");
-    cout << score << endl;
+    cout << "Your score: " << score << endl << endl;
     cout << "   1 2 3 4 5 6 7 8 9 10" << endl;
     for (int i = 0; i < 10; i++) {
         cout << setw(2) << i+1 << " ";
@@ -221,7 +221,10 @@ void displayGame() {
         return;
     }
     int choice;
-    cin >> choice;
+    while (choice <= 0 or choice >= 4) {
+        cout << "Please enter the block you want to choose: ";
+        cin >> choice;
+    }
     memset(block, 0, sizeof(block));
     memcpy(block, tmpBlock[choice-1], sizeof(tmpBlock[choice-1]));
 }
@@ -232,6 +235,7 @@ int main() {
     
 enter:
     int x, y;
+    cout << "Enter the left corner coordinate: ";
     cin >> x >> y;
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
